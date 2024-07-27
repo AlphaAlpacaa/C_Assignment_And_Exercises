@@ -1,0 +1,37 @@
+# Project: ControlExample
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = main.o matrix.o numeric.o control.o
+LINKOBJ  = main.o matrix.o numeric.o control.o
+LIBS     = -L"D:/Programs/Dev-Cpp/MinGW64/lib32" -L"D:/Programs/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib32" -static-libgcc -m32
+INCS     = -I"D:/Programs/Dev-Cpp/MinGW64/include" -I"D:/Programs/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Programs/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"D:/Programs/Dev-Cpp/MinGW64/include" -I"D:/Programs/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Programs/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/Programs/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = ControlExample.exe
+CXXFLAGS = $(CXXINCS) -m32 -std=c99
+CFLAGS   = $(INCS) -m32 -std=c99
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.c
+	$(CC) -c main.c -o main.o $(CFLAGS)
+
+matrix.o: matrix.c
+	$(CC) -c matrix.c -o matrix.o $(CFLAGS)
+
+numeric.o: numeric.c
+	$(CC) -c numeric.c -o numeric.o $(CFLAGS)
+
+control.o: control.c
+	$(CC) -c control.c -o control.o $(CFLAGS)
